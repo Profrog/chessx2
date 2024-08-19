@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputFilter;
 import java.nio.file.*;
@@ -54,6 +55,45 @@ public class Chessx2Application {
 		returning.put("id",gif_name);
 		returning.put("input_dir",path.toString());
 		returning.put("output_dir", "./images" + gif_name);
+
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(returning);
+	}
+
+	@PostMapping("/api/update")
+	public String updategif(@RequestBody Map<String,String> data) throws IOException {
+
+		StringBuilder gif_links = new StringBuilder("[");
+		ClassPathResource resource0 = new ClassPathResource("static/images/gifoutput/0sample.gif");
+		String output_link = Paths.get(resource0.getURI()).getParent().toString();
+		boolean filecheck = false;
+
+		File directory=new File(output_link);
+		if (directory.exists() && directory.isDirectory()) {
+
+			File[] files = directory.listFiles();
+			if (files != null) {
+				for (File file : files) {
+					// 파일 또는 폴더의 이름 출력
+					gif_links.append(file.getName() + ",");
+					filecheck = true;
+				}
+			}
+		}
+
+
+		if(filecheck)
+		{
+			gif_links.setCharAt(gif_links.length()-1, ']');
+		}
+
+		else
+		{
+			gif_links.append(']');
+		}
+
+		Map<String,String> returning = new HashMap<>();
+		returning.put("gif_link",gif_links.toString());
 
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(returning);
