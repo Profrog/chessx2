@@ -7,24 +7,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href ="./main.css" rel = "stylesheet">
-    <script src ="./main.js"></script>
+    <link href ="/css/main.css" rel = "stylesheet">
+    <script src ="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<!-- header -->
+<!-- 메뉴바 구현 -->
 <nav class="px-5 navbar navbar-expand navbar-dark bg-dark position-fixed w-100">
-    <a class="navbar-brand" href="#">chessx2</a>
+    <a class="navbar-brand p" href="/">chessx2</a>
     <ul class="navbar-nav ms-auto" style = "margin-left: auto;">
+<!--        메인 메뉴로 이동-->
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Main</a>
         </li>
 
+<!--        gif 생성기로 이동-->
         <li class="nav-item">
             <a class="nav-link" href="/ptg">pgntogif</a>
         </li>
 
+<!--        about으로 이동-->
         <li class="nav-item">
             <a class="nav-link" href="/about">about</a>
         </li>
@@ -32,6 +38,7 @@
     </ul>
 </nav>
 
+<!-- 홍보 세션 -->
 <header>
     <section id = "main-part" class ="pt-5">
         <div id="carouselExampleIndicators" class="carousel slide">
@@ -42,7 +49,7 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active d-flex ml-3 mr-3">
-                    <img src="./images/example2.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 1">
+                    <img src="./images/sample2.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 1">
 
                     <div>
                         <div class="f-60 mb-3 mt-3 ml-3 mr-3">PgnToGif </div>
@@ -52,7 +59,7 @@
                 </div>
 
                 <div class="carousel-item ml-3 mr-3">
-                    <img src="./images/example.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 2">
+                    <img src="./images/sample.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 2">
 
                 </div>
             </div>
@@ -67,12 +74,30 @@
     <fotter class="bg-dark text-white p-3 text-center ml-3">
         CopyRight 2024 profrog All right reserved
     </fotter>
+
 </header>
 
-<!-- main -->
-<!-- footer -->
 
-<!-- lorem100 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!-- 스킨 선택창 -->
+<div class="container my-4">
+    <h1 class="text-center mb-4">Select Skin</h1>
+    <div class="row">
+        <!-- Gallery Item 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card" id="card1">
+                <img src="./images/skin1/sample.gif" class="card-img-top" alt="skin1" onclick="handleImageClick(this)">
+            </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card" id="card2">
+                <img src="./images/skin2/sample.gif" class="card-img-top" alt="skin2" onclick="handleImageClick(this)">
+            </div>
+        </div>
+        <!-- Additional gallery items go here -->
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,83 @@
+position: relative;
+width: 1280px;
+height: 720px;
+
+.left_align{ /*홍보 파트 유지*/
+    display : flex;
+    align-items : center;
+}
+
+.carousel-item > img { /*홍보 파트 유지*/
+    height : 50vh;
+}
+
+nav{
+    z-index : 10;
+}
+
+
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.f-60{ /*f-는 폰트 제어*/
+    font-size: 60px;
+    color:rgb(9, 10, 9);
+
+}
+
+.f-40{
+    font-size: 40px;
+    color: rgb(4, 4, 63);
+}
+
+.f-30{
+    font-size: 30px;
+    color:rgb(9, 10, 9);
+}
+
+.f-20{
+    font-size: 20px;
+    color:rgb(9, 10, 9);
+}
+
+.f-10{
+    font-size: 10px;
+    color:rgb(9, 10, 9);
+}
+
+
+.carousel-control-next-icon { /*홍보 문구 오른쪽 화살표 보이는 역할*/
+        background-color: black; /* 기본적으로 배경색을 지정해 보이도록 합니다 */
+        width: 50px; /* 크기 조정 */
+        height: 50px; /* 크기 조정 */
+    }
+
+
+.square{ /*정사각형 유지*/
+   aspect-ratio: 1 / 1;
+   padding: 20px;
+}
+
+.card{ /*스킨 클릭 가능하게 함*/
+    cursor: pointer;
+}
+
+.mini{ /*스킨 클릭 가능하게 함*/
+    cursor: pointer;
+     width: 50px; /* 크기 조정 */
+     height: auto; /* 크기 조정 */
+}
+
+.midium{ /*스킨 클릭 가능하게 함*/
+    cursor: pointer;
+     width: 200px; /* 크기 조정 */
+     height: auto; /* 크기 조정 */
+}
+
+    .custom-border-dashed {
+      border: 2px dashed #4169E1; /* 대시 스타일 경계선 */border-radius: 4px;
+    }
+
+
