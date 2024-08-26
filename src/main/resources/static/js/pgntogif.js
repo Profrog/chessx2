@@ -93,15 +93,7 @@ let black_bottom_opt = 0;
   {
     pgndata = document.getElementById('pgndata').value;
     const checkedRadio = document.querySelector('input[name="sideRadios"]:checked');
-    if(checkedRadio.textContent == 'black')
-    {
-        black_bottom_opt = 1;
-    }
-
-    else
-    {
-       black_bottom_opt = 0;
-    }
+    let black_bottom_opt = checkedRadio.value;
 
     const checkedSpeed = document.querySelector('input[name="Speeds"]:checked');
     let speed0 = checkedSpeed.value;
