@@ -22,7 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation group: 'io.github.profrog', name: 'chessx2', version: '2.0.4'
+	implementation group: 'io.github.profrog', name: 'chessx2', version: '2.0.5'
 }
 
 tasks.named('test') {

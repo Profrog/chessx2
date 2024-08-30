@@ -45,7 +45,6 @@ let black_bottom_opt = 0;
         images.push(dir_link + image_link + "/" + i.toString().padStart(2, '0') + imagetype);
     }
 
-
      const gallery = document.getElementById('image_gallery');
      idx = 0;
         // 이미지 배열을 순회하여 갤러리에 추가
@@ -53,24 +52,60 @@ let black_bottom_opt = 0;
             // div.col 생성
             const colDiv = document.createElement('div');
             colDiv.className = 'col-md-4';
-            // img 태그 생성
+            // input 태그 생성
+            const inputElement = document.createElement('input');
+            inputElement.type = 'file';
+            inputElement.id = label_name[idx] + " upload";
+            inputElement.accept = "image/*";
+            inputElement.style = "display: none;";
+            inputElement.addEventListener('change',update_img(idx, label_name[idx]));
+
+            //img 태그 생성
             const imgElement = document.createElement('img');
             imgElement.src = src;
             imgElement.className = 'img-fluid mini';
             imgElement.alt = src;
             imgElement.id = label_name[idx];
+            imgElement.addEventListener('click',uploading(inputElement.id));
 
             const labelDiv = document.createElement('div');
             labelDiv.className = 'label';
-            labelDiv.textContent = label_name[idx];
+            labelDiv.textContent = label_name[idx] + " label";
             idx = idx + 1;
             // colDiv에 img 태그 추가
             colDiv.appendChild(imgElement);
+            colDiv.appendChild(inputElement);
             colDiv.appendChild(labelDiv);
             // gallery 요소에 colDiv 추가
             gallery.appendChild(colDiv);
         });
  }
+
+ function uploading(upload_id)
+ {
+    return function(event){
+      const fileInput = document.getElementById(upload_id);
+      fileInput.click();
+      };
+ }
+
+  function update_img(idx,img_id)
+  {
+         return function(event){
+          const file = event.target.files[0];
+
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  images[idx] = e.target.result;
+                  const img = document.getElementById(img_id);
+                  img.src = images[idx];
+              };
+              reader.readAsDataURL(file);
+          }
+      }
+  }
+
 
   function getDropdownValue() {
              // 드롭다운 요소 가져오기
@@ -80,7 +115,7 @@ let black_bottom_opt = 0;
                 localStorage.setItem('skin_data', selectedValue);
                 image_link = selectedValue;
 
-                  for (let i = 0; i <= 12; i++) {
+                  for (let i = 0; i < 1; i++) {
                         images[i] = dir_link + image_link + "/" + i.toString().padStart(2, '0') + ".png";
                         document.getElementById(label_name[i]).src = images[i];
                         document.getElementById(label_name[i]).alt = images[i];
@@ -94,6 +129,11 @@ let black_bottom_opt = 0;
     pgndata = document.getElementById('pgndata').value;
     const checkedRadio = document.querySelector('input[name="sideRadios"]:checked');
     let black_bottom_opt = checkedRadio.value;
+    let skin_dir = "[";
+    for (let i = 0; i <= 12; i++) {
+        skin_dir = skin_dir + images[i] + ",";
+    }
+    skin_dir = skin_dir.slice(0,-1) + "]";
 
     const checkedSpeed = document.querySelector('input[name="Speeds"]:checked');
     let speed0 = checkedSpeed.value;
@@ -102,6 +142,7 @@ let black_bottom_opt = 0;
       pgndata: pgndata,
       black_bottom_opt: black_bottom_opt,
       input_link : dir_link + image_link,
+      skin_dir : skin_dir,
       delay : speed0
     };
 
@@ -117,7 +158,6 @@ let black_bottom_opt = 0;
       .then(response => response.json())
       .then(data => {
         //console.log(data.output_dir); // 서버의 응답을 처리합니다
-
         gif_src = data.output_dir;
         gif_id = data.id;
         showingGifdata();
@@ -139,7 +179,7 @@ let black_bottom_opt = 0;
          imgElement.className = 'img-fluid midium';
          imgElement.alt = src0;
          imgElement.id = id0;
-          imgElement.addEventListener('click', () => {
+         imgElement.addEventListener('click', () => {
                const link = document.createElement('a');
                link.href = src0;
                link.download = 'result.gif';  // 원하는 파일 이름document.body.appendChild(link);

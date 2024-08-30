@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputFilter;
@@ -37,6 +36,9 @@ public class Chessx2Application {
 		String dir0 = "\\output";
 		String pgndata = data.get("pgndata");
 		int black_bottom_opt = Integer.parseInt(data.get("black_bottom_opt"));
+		String skin_dir = data.get("skin_dir");
+		skin_dir = skin_dir.replace("./",path_dir);
+		System.out.println("dddd" + skin_dir);
 
 		String input_link = data.get("input_link");
 		input_link = path_dir + input_link.substring(1);
@@ -46,11 +48,10 @@ public class Chessx2Application {
 		ClassPathResource resource0 = new ClassPathResource("static/images/chesschess.png");
 		String output_link = Paths.get(resource0.getURI()).getParent().toString();
 		File directory = new File(path.toString() + "/output");
-		deleteFolder(directory);
 
 		//System.out.println("*******" + black_bottom_opt);
 		List<int[][]> alpa =  PgnParse.parserInit(pgndata,black_bottom_opt,0);
-		String input_dir = PgnToImage.imageInit(alpa,path.toString());
+		String input_dir = PgnToImage.imageInit(alpa,path.toString(),skin_dir);
 		System.out.println(gif_name);
 		int delay = Integer.parseInt(data.get("delay"));
 		ImageToGif.gifInit(output_link + gif_name, input_dir, delay);
@@ -103,19 +104,6 @@ public class Chessx2Application {
 		return mapper.writeValueAsString(returning);
 	}
 
-	public static boolean deleteFolder(File folder) {
-		File[] files = folder.listFiles();
-		if (files != null) {  // 폴더가 비어있지 않은 경우
-			for (File file : files) {
-				if (file.isDirectory()) {
-					deleteFolder(file);  // 재귀적으로 하위 폴더 삭제
-				} else {
-					file.delete();  // 파일 삭제
-				}
-			}
-		}
-		return folder.delete();  // 최종적으로 폴더 삭제
-	}
 }
 
 
