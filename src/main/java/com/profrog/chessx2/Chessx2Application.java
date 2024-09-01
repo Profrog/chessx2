@@ -8,10 +8,8 @@ import org.apache.coyote.Response;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,6 +100,33 @@ public class Chessx2Application {
 
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(returning);
+	}
+
+	@PostMapping("/api/upload")
+	public String uploadCustomImage(@RequestParam("file") MultipartFile file) throws IOException {
+		if(file.isEmpty())
+		{
+			return "No file error";
+		}
+
+		try {
+			// 파일을 저장할 경로 지정
+			Random random = new Random();
+			String filePath = path_dir + "images/custom/" + String.valueOf(random.nextInt(1000000)) + ".png";
+			File dest = new File(filePath);
+			// 파일 저장
+			file.transferTo(dest);
+
+			Map<String,String> returning = new HashMap<>();
+			returning.put("download_dir",filePath);
+
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.writeValueAsString(returning);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "Failed to upload file: " + e.getMessage();
+		}
 	}
 
 }

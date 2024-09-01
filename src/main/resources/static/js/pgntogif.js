@@ -58,7 +58,7 @@ let black_bottom_opt = 0;
             inputElement.id = label_name[idx] + " upload";
             inputElement.accept = "image/*";
             inputElement.style = "display: none;";
-            inputElement.addEventListener('change',update_img(idx, label_name[idx]));
+
 
             //img 태그 생성
             const imgElement = document.createElement('img');
@@ -66,19 +66,28 @@ let black_bottom_opt = 0;
             imgElement.className = 'img-fluid mini';
             imgElement.alt = src;
             imgElement.id = label_name[idx];
-            imgElement.addEventListener('click',uploading(inputElement.id));
+
 
             const labelDiv = document.createElement('div');
             labelDiv.className = 'label';
-            labelDiv.textContent = label_name[idx] + " label";
-            idx = idx + 1;
+            labelDiv.textContent = label_name[idx];
             // colDiv에 img 태그 추가
             colDiv.appendChild(imgElement);
             colDiv.appendChild(inputElement);
             colDiv.appendChild(labelDiv);
             // gallery 요소에 colDiv 추가
             gallery.appendChild(colDiv);
+            prepareUpload(idx);
+            idx = idx + 1;
         });
+ }
+
+ function prepareUpload(idx)
+ {
+     const imgElement = document.getElementById(label_name[idx]);
+     const inputElement = document.getElementById(label_name[idx] + " upload");
+     imgElement.addEventListener('click',uploading(label_name[idx] + " upload"));
+     inputElement.addEventListener('change',update_img(idx, label_name[idx]));
  }
 
  function uploading(upload_id)
@@ -92,14 +101,33 @@ let black_bottom_opt = 0;
   function update_img(idx,img_id)
   {
          return function(event){
-          const file = event.target.files[0];
+         const file = event.target.files[0];
+
 
           if (file) {
               const reader = new FileReader();
               reader.onload = function(e) {
-                  images[idx] = e.target.result;
-                  const img = document.getElementById(img_id);
-                  img.src = images[idx];
+                  const form_data = new FormData();
+                  form_data.append('file',file);
+
+                  fetch('/api/upload', {
+                      method: 'POST',
+                      body: form_data
+                  }).then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                      //console.log(data.output_dir); // 서버의 응답을 처리합니다
+                      download_dir = data.download_dir;
+                      images[idx] = download_dir;
+                      const img = document.getElementById(img_id);
+                      img.src = e.target.result;
+                    })
+                    .catch(error =>console.error('Error:', error));
+
               };
               reader.readAsDataURL(file);
           }
@@ -112,7 +140,7 @@ let black_bottom_opt = 0;
             const selectedValue = document.getElementById('skinselect').value;
             if (selectedValue) {
                 // 콤보박스 요소 가져오기
-                localStorage.setItem('skin_data', selectedValue);
+                //localStorage.setItem('skin_data', selectedValue);
                 image_link = selectedValue;
 
                   for (let i = 0; i < 1; i++) {
@@ -182,7 +210,7 @@ let black_bottom_opt = 0;
          imgElement.addEventListener('click', () => {
                const link = document.createElement('a');
                link.href = src0;
-               link.download = 'result.gif';  // 원하는 파일 이름document.body.appendChild(link);
+               link.download = 'pgn.gif';  // 원하는 파일 이름document.body.appendChild(link);
                link.click();
                document.body.removeChild(link);
           });
