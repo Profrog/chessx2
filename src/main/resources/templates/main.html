@@ -18,7 +18,7 @@
 <body>
 <!-- 메뉴바 구현 -->
 <nav class="px-5 navbar navbar-expand navbar-dark bg-dark position-fixed w-100">
-    <a class="navbar-brand p" href="/">chessx2</a>
+    <a class="navbar-brand p" href="/">Pgn Studio</a>
     <ul class="navbar-nav ms-auto" style = "margin-left: auto;">
 <!--        메인 메뉴로 이동-->
         <li class="nav-item">
@@ -49,17 +49,17 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active d-flex ml-3 mr-3">
-                    <img src="./images/sample/skin0.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 1">
+                    <img src="./images/sample/1.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 1">
 
                     <div>
-                        <div class="f-60 mb-3 mt-3 ml-3 mr-3">PgnToGif </div>
+                        <div class="f-60 mb-3 mt-3 ml-3 mr-3">Pgn Studio </div>
                         <div class="f-30 mb-3 mt-3 ml-3 mr-3">pgn데이터와 스킨으로 <br> 나만의 gif 결과물을 만들어보자</div>
                         <a href="https://blog.naver.com/ache159/223393796034" class = "f-30 mt-3 mb-3"> PGN 데이터란?</a>
                     </div>
                 </div>
 
                 <div class="carousel-item ml-3 mr-3">
-                    <img src="./images/sample/skin1.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 2">
+                    <img src="./images/sample/2.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 2">
 
                 </div>
             </div>
@@ -79,22 +79,11 @@
 
 
 <!-- 스킨 선택창 -->
-<div class="container my-4">
+<div class="container my-4" >
     <h1 class="text-center mb-4">Select Piece Skin</h1>
-    <div class="row">
+    <div class="row" id = "selectpiece">
         <!-- Gallery Item 1 -->
-        <div class="col-md-4 mb-4">
-            <div class="card" id="card1">
-                <img src="./images/sample/skin0.gif" class="card-img-top" alt="skin1" onclick="handleImageClick(this)">
-            </div>
-        </div>
 
-        <!-- Gallery Item 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card" id="card2">
-                <img src="./images/sample/skin1.gif" class="card-img-top" alt="skin2" onclick="handleImageClick(this)">
-            </div>
-        </div>
         <!-- Additional gallery items go here -->
     </div>
 

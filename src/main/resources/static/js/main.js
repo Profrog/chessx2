@@ -1,10 +1,78 @@
     let image_alt = '';
 
+    const label_name = [
+        '1.Chessx2',
+        '2.Neo',
+        '3.Game Room',
+        '4.Wood',
+        '5.Glass',
+        '6.Gothic',
+        '7.Classic',
+        '8.Metal',
+        '9.Bases',
+        '10.Neo-Wood',
+        '11.Icy Sea',
+        '12.Club',
+        '13.Ocean',
+        '14.Newspaper',
+        '15.Blindfold',
+        '16.Space',
+        '17.Condal',
+        '18.8-Bit',
+        '19.Marble',
+        '20.Book',
+        '21.Bubblegum',
+        '22.Dash',
+        '23.Graffiti',
+        '24.Lolz',
+        '25.Luca',
+        '26.Maya',
+        '27.Nature',
+        '28.Neon',
+        '29.Sky',
+        '30.Tigers',
+        '31.Tournament',
+        '32.Vintage'
+    ]
+
+
+
     window.onload = function() {
         // localStorage에서 선택된 값 가져오기
         updateUserProduct();
-
+        addSelectPiece(32);
     }
+
+     function addSelectPiece(casecount)
+     {
+        images = [];
+        const gallery = document.getElementById('selectpiece');
+
+        for (let i = 1; i <= casecount; i++) {
+               const colDiv = document.createElement('div');
+                            colDiv.className = 'col-md-4 mb-4';
+                            // input 태그 생성
+                            const cardElement = document.createElement('card');
+                            cardElement.id = "card" + i.toString();
+
+                            //img 태그 생성
+                            const imgElement = document.createElement('img');
+                            imgElement.src = "./images/sample/" + i.toString() + ".gif";
+                            imgElement.className = 'card-img-top';
+                            imgElement.alt = "skin" + i.toString();
+                            imgElement.onclick = () => handleImageClick(imgElement);
+
+                            const labelDiv = document.createElement('div');
+                            labelDiv.className = 'label';
+                            labelDiv.textContent = label_name[i-1];
+                            // colDiv에 img 태그 추가
+                            colDiv.appendChild(imgElement);
+                            colDiv.appendChild(cardElement);
+                            colDiv.appendChild(labelDiv);
+                            // gallery 요소에 colDiv 추가
+                            gallery.appendChild(colDiv);
+        }
+     }
 
 
     function updateUserProduct() {
