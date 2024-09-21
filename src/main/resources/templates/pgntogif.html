@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>chessx2</title>
+    <meta property="og:image" content="./images/chesschess.png">
+    <title>Pgn Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
@@ -32,11 +33,17 @@
     </ul>
 </nav>
 
+
+
 <section id = "main-part" class ="pt-5 pt-5">
     <div class="dropdown my-3 mx-3">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a href="https://blog.naver.com/ache159/223591252625" class = "f-15 mt-3 mb-3"> Pgn Studio <br> 사용자 가이드 링크(USER GUIDE)</a>
+        <h2 class="text-center mb-4">STEP2. GIF를 생성하고 싶은 체스 보드 스킨을 고르세요</h2>
+        <h3 class="text-center mb-4">STEP2. Select chess board skin for making GIF</h3>
+        <div class="d-flex justify-content-center">
+        <button class="text-center btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="form-group">
-                <label for="skinselect">Change Board Skin</label>
+                <h3 class="text-center mb-4">보드 스킨 리스트(Board Skin List)</h3>
                 <select class="form-control" id="skinselect">
                     <option value="skin1">Chessx2</option>
                     <option value="skin2">Green</option>
@@ -73,22 +80,26 @@
                 </select>
             </div>
         </button>
+
+            </div>
     </div>
 
-    <button class="btn btn-primary mx-3" onclick="getDropdownValue()">Change it</button>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary mx-3" onclick="getDropdownValue()">선택된 보드 스킨 적용(Apply selected board skin)</button>
+    </div>
 
     <div class="container my-5">
-        <h2>Skin Data</h2>
+        <h2 class="text-center mb-4">STEP3. 커스텀 이미지를 적용하고자 하면, 기물 혹은 보드의 미리보기 이미지를 클릭하세요</h2>
+        <h3 class="text-center mb-4">STEP3. If you want to apply a custom image, click on the preview image of the piece or board</h3>
         <div class="row gallery" id="image_gallery">
             <!-- Images will be loaded here by JavaScript -->
         </div>
     </div>
 
     <div class="container form-group my-5">
-        <label for="pgndata">
-            <h2>paste pgn data to here</h2>
-        </label>
-        <textarea class="form-control form-control-lg custom-border-dashed" id="pgndata" rows="3" placeholder="pgn 데이터 붙여넣기"></textarea>
+        <h2 class="text-center mb-4">STEP4. 체스닷컴이나 리체스의 PGN 데이터를 붙여넣기 하세요</h2>
+        <h3 class="text-center mb-4">STEP4. Paste PGN data from Chess.com or Lichess</h3>
+        <textarea class="form-control form-control-lg custom-border-dashed" id="pgndata" rows="3" placeholder="pgn 데이터 붙여넣기(paste pgn data)"></textarea>
         <script>const textarea = document.getElementById('pgndata');
           textarea.addEventListener('input', function() {
             textarea.style.height = 'auto';
@@ -96,7 +107,7 @@
           });
         </script>
 
-        <label>which is your side</label>
+        <label>하단에 배치되는 기물 색상(Color of the objects placed at the bottom)</label>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="sideRadios" id="white" value="0" checked>
             <label class="form-check-label" for="white">white</label>
@@ -106,7 +117,7 @@
             <label class="form-check-label" for="black">black</label>
         </div>
 
-        <label>speed</label>
+        <label>기물 전개 속도 배속(piece deployment speed multiplier)</label>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="Speeds" id="1" value="1000" checked>
             <label class="form-check-label" for="1">x1</label>
@@ -120,11 +131,12 @@
             <label class="form-check-label" for="2">x2</label>
         </div>
 
-        <button class="btn btn-primary mx-3" onclick="makeGIF()">Make GIF</button>
+        <button class="btn btn-primary mx-3" onclick="makeGIF()">GIF 생성(Make GIF)</button>
     </div>
 
     <div class="container my-5">
-        <h2>Gif Data</h2>
+        <h2 class="text-center mb-4">STEP5. 생성된 GIF를 클릭하여 다운로드 받으세요 <br> 10초 정도 기다려 주세요 </h2>
+        <h3 class="text-center mb-4">STEP5. Click on the generated GIF to download it <br> please wait for 10 minutes</h3>
         <div class="row gallery" id="gif_gallery">
             <!-- Images will be loaded here by JavaScript -->
         </div>

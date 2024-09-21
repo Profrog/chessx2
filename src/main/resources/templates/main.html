@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>chessx2</title>
+    <meta property="og:image" content="./images/chesschess.png">
+    <title>Pgn Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
@@ -49,51 +50,51 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active d-flex ml-3 mr-3">
-                    <img src="./images/sample/1.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 1">
+                    <img id="gif_sample" src="./images/sample/1.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 1">
 
                     <div>
                         <div class="f-60 mb-3 mt-3 ml-3 mr-3">Pgn Studio </div>
                         <div class="f-30 mb-3 mt-3 ml-3 mr-3">pgn데이터와 스킨으로 <br> 나만의 gif 결과물을 만들어보자</div>
-                        <a href="https://blog.naver.com/ache159/223393796034" class = "f-30 mt-3 mb-3"> PGN 데이터란?</a>
+                        <a href="https://blog.naver.com/ache159/223591252625" class = "f-30 mt-3 mb-3"> Pgn Studio <br> 사용자 가이드 링크(USER GUIDE)</a>
                     </div>
                 </div>
-
-                <div class="carousel-item ml-3 mr-3">
-                    <img src="./images/sample/2.gif" class="square mb-3 mt-3 ml-3 mr-3" alt="Slide 2">
-
-                </div>
             </div>
+
+            <fotter class="bg-dark text-white p-3 text-center ml-3">
+                CopyRight 2024 profrog All right reserved
+            </fotter>
 
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </section>
 
-    <fotter class="bg-dark text-white p-3 text-center ml-3">
-        CopyRight 2024 profrog All right reserved
-    </fotter>
+
+    </section>
 
 </header>
 
 
 <!-- 스킨 선택창 -->
 <div class="container my-4" >
-    <h1 class="text-center mb-4">Select Piece Skin</h1>
+    <h1 class="text-center mb-4">STEP1. GIF를 생성하고 싶은 기물 스킨 세트를 고르세요</h1>
+    <h2 class="text-center mb-4">STEP1. Select piece skin for making GIF</h2>
     <div class="row" id = "selectpiece">
-        <!-- Gallery Item 1 -->
-
+        <!-- main.js에서 리스트 자동으로 추가 -->
         <!-- Additional gallery items go here -->
     </div>
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">User Product</h1>
+        <h1 class="text-center mb-4">커스텀 결과물 예시</h1>
+        <h2 class="text-center mb-4">Custom Product Example</h2>
         <div class="row gallery" id="user_gallery">
             <!-- Images will be loaded here by JavaScript -->
         </div>
     </div>
 </div>
+
+
 
 </body>
 </html>

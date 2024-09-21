@@ -1,6 +1,6 @@
     let image_alt = '';
 
-    const label_name = [
+    const skin_label_name = [ //piece skin 이름
         '1.Chessx2',
         '2.Neo',
         '3.Game Room',
@@ -35,12 +35,19 @@
         '32.Vintage'
     ]
 
-
-
     window.onload = function() {
-        // localStorage에서 선택된 값 가져오기
-        updateUserProduct();
-        addSelectPiece(32);
+        //유저 데이터로 샘플 결로 업데이트
+        const sample_link = localStorage.getItem('sample');
+        const sample_opt = localStorage.getItem('sample_opt');
+
+        if(sample_opt == "1")
+        {
+            const gif_sample = document.getElementById('gif_sample');
+            gif_sample.src = sample_link;
+        }
+
+        updateUserProduct(); //커스텀 결과물 예시 업데이트
+        addSelectPiece(32); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
     }
 
      function addSelectPiece(casecount)
@@ -64,7 +71,7 @@
 
                             const labelDiv = document.createElement('div');
                             labelDiv.className = 'label';
-                            labelDiv.textContent = label_name[i-1];
+                            labelDiv.textContent = skin_label_name[i-1];
                             // colDiv에 img 태그 추가
                             colDiv.appendChild(imgElement);
                             colDiv.appendChild(cardElement);
