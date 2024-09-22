@@ -76,8 +76,12 @@ nav{
      height: auto; /* 크기 조정 */
 }
 
-    .custom-border-dashed {
-      border: 2px dashed #4169E1; /* 대시 스타일 경계선 */border-radius: 4px;
-    }
+.custom-border-dashed {
+  border: 2px dashed #4169E1; /* 대시 스타일 경계선 */border-radius: 4px;
+}
+
+.hidden {
+    display : none;
+}
 
 

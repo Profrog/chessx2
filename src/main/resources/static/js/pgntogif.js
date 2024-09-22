@@ -154,6 +154,9 @@ let black_bottom_opt = 0;
 
   function makeGIF()
   {
+    const wait_alarm = document.getElementById('waiting');
+    wait_alarm.style.display = "block";
+
     pgndata = document.getElementById('pgndata').value;
     const checkedRadio = document.querySelector('input[name="sideRadios"]:checked');
     let black_bottom_opt = checkedRadio.value;
@@ -226,6 +229,9 @@ let black_bottom_opt = 0;
          colDiv.appendChild(labelDiv);
          // gallery 요소에 colDiv 추가
          gif_gallery.appendChild(colDiv);
+
+         const wait_alarm = document.getElementById('waiting');
+         wait_alarm.style.display = "none";
   }
 
 
