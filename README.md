@@ -15,4 +15,5 @@ springboot 프로젝트 생성 및 jar 추출 : [https://blog.naver.com/ache159/
 springboot 프로젝트 임대 서버 배포 : https://blog.naver.com/ache159/223528091130
 figma로 화면 설계하고 css 추출 : https://blog.naver.com/ache159/223529956961
 springboot 프로젝트에 html 연결하고 css 붙이기 : https://blog.naver.com/ache159/223531145265  
-pgn studio 가이드 : https://blog.naver.com/ache159/223591252625 
+pgn studio 가이드 : https://blog.naver.com/ache159/223591252625
+가비아에서 도메인 구매 후 서버 등록 : https://blog.naver.com/ache159/223592697753
