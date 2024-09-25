@@ -8,7 +8,8 @@ public class frontend {
 
     @GetMapping(value = "/")
     public String mainpage() {
-        return "main";
+        //return "main";
+        return "google854d6ce6f5670d09";
     }
 
     @GetMapping(value = "/ptg")
