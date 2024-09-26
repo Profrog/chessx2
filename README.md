@@ -16,4 +16,5 @@ springboot 프로젝트 임대 서버 배포 : https://blog.naver.com/ache159/22
 figma로 화면 설계하고 css 추출 : https://blog.naver.com/ache159/223529956961
 springboot 프로젝트에 html 연결하고 css 붙이기 : https://blog.naver.com/ache159/223531145265  
 pgn studio 가이드 : https://blog.naver.com/ache159/223591252625  
-가비아에서 도메인 구매 후 서버 등록 : https://blog.naver.com/ache159/223592697753
+가비아에서 도메인 구매 후 서버 등록 : https://blog.naver.com/ache159/223592697753  
+부트스트렙 웹 사이트 구글에 노출시키기 : https://blog.naver.com/ache159/223596566969  
