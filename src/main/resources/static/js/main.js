@@ -40,11 +40,17 @@
         //유저 데이터로 샘플 결로 업데이트
         const sample_link = localStorage.getItem('sample');
         const sample_opt = localStorage.getItem('sample_opt');
+        const gif_sample = document.getElementById('gif_sample');
 
         if(sample_opt == "1")
         {
-            const gif_sample = document.getElementById('gif_sample');
             gif_sample.src = sample_link;
+        }
+
+        if(gif_sample.src == 'undefined')
+        {
+             gif_sample.src = './images/sample/0.gif';
+             localStorage.setItem('sample_opt', "0");
         }
 
         //updateUserProduct(); //커스텀 결과물 예시 업데이트
