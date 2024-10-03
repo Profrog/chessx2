@@ -32,7 +32,8 @@
         '29.Sky',
         '30.Tigers',
         '31.Tournament',
-        '32.Vintage'
+        '32.Vintage',
+        '33.Halloween'
     ]
 
     window.onload = function() {
@@ -47,7 +48,7 @@
         }
 
         //updateUserProduct(); //커스텀 결과물 예시 업데이트
-        addSelectPiece(32); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
+        addSelectPiece(33); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
     }
 
      function addSelectPiece(casecount)
@@ -56,30 +57,29 @@
         const gallery = document.getElementById('selectpiece');
 
         for (let i = 1; i <= casecount; i++) {
-                            //const colDiv = document.createElement('div');
-                            //colDiv.className = 'col-md-4 mb-4';
+                            const colDiv = document.createElement('div');
+                            colDiv.className = 'col-md-4 mb-4';
                             // input 태그 생성
-                            //const cardElement = document.createElement('card');
-                            //cardElement.id = "card" + i.toString();
+                            const cardElement = document.createElement('card');
+                            cardElement.id = "card" + i.toString();
                             const cardid = "card" + i.toString();
-                            const colDiv = document.getElementById(cardid);
 
                             //img 태그 생성
-                            //const imgElement = document.createElement('img');
-                            //imgElement.src = "./images/sample/" + i.toString() + ".gif";
-                            //imgElement.className = 'card-img-top';
-                            //imgElement.alt = "skin" + i.toString();
-                            //imgElement.onclick = () => handleImageClick(imgElement);
+                            const imgElement = document.createElement('img');
+                            imgElement.src = "./images/sample/" + i.toString() + ".png";
+                            imgElement.className = 'card-img-top';
+                            imgElement.alt = "skin" + i.toString();
+                            imgElement.onclick = () => handleImageClick(imgElement);
 
                             const labelDiv = document.createElement('div');
                             labelDiv.className = 'label';
                             labelDiv.textContent = skin_label_name[i-1];
                             // colDiv에 img 태그 추가
-                            //colDiv.appendChild(imgElement);
-                            //colDiv.appendChild(cardElement);
+                            colDiv.appendChild(imgElement);
+                            colDiv.appendChild(cardElement);
                             colDiv.appendChild(labelDiv);
                             // gallery 요소에 colDiv 추가
-                            //gallery.appendChild(colDiv);
+                            gallery.appendChild(colDiv);
         }
      }
 
