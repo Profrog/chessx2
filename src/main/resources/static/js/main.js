@@ -33,7 +33,8 @@
         '30.Tigers',
         '31.Tournament',
         '32.Vintage',
-        '33.Halloween'
+        '33.Halloween',
+        '34.Starwars'
     ]
 
     window.onload = function() {
@@ -54,7 +55,7 @@
         }
 
         //updateUserProduct(); //커스텀 결과물 예시 업데이트
-        addSelectPiece(33); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
+        addSelectPiece(34); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
     }
 
      function addSelectPiece(casecount)
