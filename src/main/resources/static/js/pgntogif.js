@@ -198,7 +198,8 @@ let black_bottom_opt = 0;
 
   function showingGifdata()
   {
-     localStorage.setItem('sample_opt', "1");
+     const sample_opt = localStorage.getItem('sample_opt');
+     localStorage.setItem('sample_opt', sample_opt + 1);
      localStorage.setItem('sample', gif_src);
 
      let src0 = gif_src;

@@ -42,12 +42,12 @@
         const sample_opt = localStorage.getItem('sample_opt');
         const gif_sample = document.getElementById('gif_sample');
 
-        if(sample_opt == "1")
+        if(sample_opt >= 1)
         {
             gif_sample.src = sample_link;
         }
 
-        if(gif_sample.src == 'undefined')
+        else
         {
              gif_sample.src = './images/sample/0.gif';
              localStorage.setItem('sample_opt', "0");
