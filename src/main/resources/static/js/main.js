@@ -34,7 +34,8 @@
         '31.Tournament',
         '32.Vintage',
         '33.Halloween',
-        '34.Starwars'
+        '34.Starwars',
+        '35.Hippo'
     ]
 
     window.onload = function() {
@@ -43,19 +44,17 @@
         const sample_opt = localStorage.getItem('sample_opt');
         const gif_sample = document.getElementById('gif_sample');
 
-        if(sample_opt >= 1)
+        if(sample_opt >= 0)
         {
-            gif_sample.src = sample_link;
-        }
-
-        else
-        {
-             gif_sample.src = './images/sample/0.gif';
-             localStorage.setItem('sample_opt', "0");
+            gif_sample.src = "./images/sample/0.gif";
+            if(sample_link.includes(".gif"))
+            {
+                gif_sample.src = sample_link;
+            }
         }
 
         //updateUserProduct(); //커스텀 결과물 예시 업데이트
-        addSelectPiece(34); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
+        addSelectPiece(35); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
     }
 
      function addSelectPiece(casecount)
