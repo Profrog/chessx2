@@ -11,9 +11,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputFilter;
+import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
@@ -52,9 +51,40 @@ public class Chessx2Application {
 		String input_dir = PgnToImage.imageInit(alpa,path.toString(),skin_dir);
 		System.out.println(gif_name);
 		int delay = Integer.parseInt(data.get("delay"));
-		ImageToGif.gifInit(output_link + gif_name, input_dir, delay);
-		Map<String,String> returning = new HashMap<>();
+		String delay0 = data.get("delay");
+		//ImageToGif.gifInit(output_link + gif_name, input_dir, delay);
+		try {
+			// ProcessBuilder에 Python 실행 명령어와 인수 설정
 
+			//
+			String scriptPath = getClass().getClassLoader().getResource("makingGif.py").getPath();
+			System.out.println("cur here " + scriptPath);
+			ProcessBuilder processBuilder = new ProcessBuilder(
+					"python3",
+					scriptPath,         // Python 스크립트 파일 경로
+					"--input_dir", input_dir,  // input_dir 인수
+					"--output_dir", output_link + gif_name, // output_dir 인수
+					"--delay", delay0         // delay 인수git
+			);
+
+			System.out.println("test here " +  output_link + gif_name);
+
+			// Process 시작
+			Process process = processBuilder.start();
+			BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+			String errorLine;
+			while ((errorLine = errorReader.readLine()) != null) {
+				System.err.println(errorLine);  // Python 오류 메시지 Java 콘솔에 출력
+			}
+			// 프로세스 종료 코드 확인
+			int exitCode = process.waitFor();
+			System.out.println("Python script exited with code: " + exitCode);
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
+
+
+        Map<String,String> returning = new HashMap<>();
 		returning.put("id",gif_name);
 		returning.put("input_dir",path.toString());
 		returning.put("output_dir", "./images" + gif_name);
