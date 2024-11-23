@@ -163,6 +163,7 @@ let black_bottom_opt = 0;
               const imgElement = document.getElementById(img_id);
               const imgUrl = URL.createObjectURL(blob); // Blob을 Object URL로 변환
               imgElement.src = imgUrl; // 이미지 엘리먼트의 src에 URL 설정
+              console.log(imgUrl);
               return imgUrl;
           })
           .catch(error => {
@@ -210,12 +211,12 @@ let black_bottom_opt = 0;
       .then(data => {
         gif_src = data.output_dir;
         gif_id = data.id;
-        showingGifdata(gif_src,gif_id);
+        showingGifdata();
       })
       .catch(error =>console.error('Error:', error));
   }
 
-  function showingGifdata(gif_src,gif_id)
+  function showingGifdata()
   {
     //이미지 클릭시 gif 다운받을 수 있는 환경 구성
      const sample_opt = localStorage.getItem('sample_opt');
@@ -223,17 +224,16 @@ let black_bottom_opt = 0;
      localStorage.setItem('sample', gif_src);
      let src0 = gif_src;
      let id0 = gif_id;
-
-     console.log(src0);
      const gif_gallery = document.getElementById('gif_gallery');
        const colDiv = document.createElement('div');
          colDiv.className = 'col-md-4';
          // img 태그 생성
          const imgElement = document.createElement('img');
          imgElement.className = 'img-fluid midium';
+         imgElement.src = "";
          imgElement.alt = id0;
          imgElement.id = id0;
-         let src00 = get_gif(src0,id0);
+         get_gif(src0,id0);
          imgElement.addEventListener('click', () => {
                const link = document.createElement('a');
                let data = imgElement.src;

@@ -43,8 +43,10 @@
         const sample_link = localStorage.getItem('sample');
         const sample_opt = localStorage.getItem('sample_opt');
         const gif_sample = document.getElementById('gif_sample');
-        gif_sample.src = "./images/sample/0.gif";
+        gif_sample.src = "./images/sample/1.gif";
+        addSelectPiece(35); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
 
+        /**
         if(sample_opt >= 0)
         {
             if(sample_link.includes(".gif"))
@@ -52,43 +54,44 @@
                 //gif_sample.src = sample_link;
             }
         }
+        **/
 
         //updateUserProduct(); //커스텀 결과물 예시 업데이트
-        addSelectPiece(35); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
+
     }
 
      function addSelectPiece(casecount)
      {//piece skin 선택 페이지 생성
         images = [];
         const gallery = document.getElementById('selectpiece');
+        console.log(casecount);
 
-        document.addEventListener('DOMContentLoaded', () => {
-            for (let i = 1; i <= casecount; i++) {
-                                const colDiv = document.createElement('div');
-                                colDiv.className = 'col-md-4 mb-4';
-                                // input 태그 생성
-                                const cardElement = document.createElement('card');
-                                cardElement.id = "card" + i.toString();
-                                const cardid = "card" + i.toString();
+        for (let i = 1; i <= casecount; i++) {
 
-                                //img 태그 생성
-                                const imgElement = document.createElement('img');
-                                imgElement.src = "./images/sample/" + i.toString() + ".png";
-                                imgElement.className = 'card-img-top';
-                                imgElement.alt = "skin" + i.toString();
-                                imgElement.onclick = () => handleImageClick(imgElement);
+                            const colDiv = document.createElement('div');
+                            colDiv.className = 'col-md-4 mb-4';
+                            // input 태그 생성
+                            const cardElement = document.createElement('card');
+                            cardElement.id = "card" + i.toString();
+                            const cardid = "card" + i.toString();
 
-                                const labelDiv = document.createElement('div');
-                                labelDiv.className = 'label';
-                                labelDiv.textContent = skin_label_name[i-1];
-                                // colDiv에 img 태그 추가
-                                colDiv.appendChild(imgElement);
-                                colDiv.appendChild(cardElement);
-                                colDiv.appendChild(labelDiv);
-                                // gallery 요소에 colDiv 추가
-                                gallery.appendChild(colDiv);
-            }
-        });
+                            //img 태그 생성
+                            const imgElement = document.createElement('img');
+                            imgElement.src = "./images/sample/" + i.toString() + ".png";
+                            imgElement.className = 'card-img-top';
+                            imgElement.alt = "skin" + i.toString();
+                            imgElement.onclick = () => handleImageClick(imgElement);
+
+                            const labelDiv = document.createElement('div');
+                            labelDiv.className = 'label';
+                            labelDiv.textContent = skin_label_name[i-1];
+                            // colDiv에 img 태그 추가
+                            colDiv.appendChild(imgElement);
+                            colDiv.appendChild(cardElement);
+                            colDiv.appendChild(labelDiv);
+                            // gallery 요소에 colDiv 추가
+                            gallery.appendChild(colDiv);
+        }
      }
 
     // 이미지 클릭 시 gif를 생성하는 페이지로 전환
@@ -101,7 +104,7 @@
         alert('Selected Image Alt: ' + selectedImageAlt);
     }
 
-    /**
+
 
     function updateUserProduct() {
         //유저가 만든 gif 결과물 리스팅
@@ -154,4 +157,4 @@
         }
     }
 
-    **/
+
