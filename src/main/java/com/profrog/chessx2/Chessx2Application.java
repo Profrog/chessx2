@@ -40,6 +40,7 @@ public class Chessx2Application {
 
 		path_dir = path_dir.replace("build\\","");//build/libs는 jar파일이 위치한 곳으로, 프로젝트 루트 경로를 겨냥하도록 수정한다.
 		path_dir =  path_dir.replace("libs/","");
+		path_dir =  path_dir.replace("build/",""); //linux용 파싱
 
 		Random random = new Random();
 		String gif_name = "/gifoutput/" + String.valueOf(random.nextInt(1000000)) + ".gif";
@@ -58,7 +59,12 @@ public class Chessx2Application {
 		//현재 입력값들이 저장된 경로를 저장
 
 		List<int[][]> alpa =  PgnParse.parserInit(pgndata,black_bottom_opt,0);
-		String input_dir = PgnToImage.imageInit(alpa,path.toString(),skin_dir);
+
+		String path0 = path.toString().replace("build/","");
+		skin_dir = skin_dir.replace("build/","");
+
+		System.out.println("current dir" + path0 + " " + skin_dir);
+		String input_dir = PgnToImage.imageInit(alpa,path0,skin_dir);
 		String delay0 = data.get("delay");
 		String out_link = path_dir + "images" + gif_name;
 		System.out.println("pgnparse로 스킨 데이터 얻는 중");
