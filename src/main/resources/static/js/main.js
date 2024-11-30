@@ -43,7 +43,7 @@
         const sample_link = localStorage.getItem('sample');
         const sample_opt = localStorage.getItem('sample_opt');
         const gif_sample = document.getElementById('gif_sample');
-        gif_sample.src = "./images/sample/1.gif";
+        gif_sample.src = "./images/sample/0.gif";
         addSelectPiece(35); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
 
         /**
