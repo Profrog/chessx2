@@ -40,22 +40,20 @@
 
     window.onload = function() {
         //유저 데이터로 샘플 결로 업데이트
-        const sample_link = localStorage.getItem('sample');
+        let sample_link = localStorage.getItem('sample');
+        let sample_links = sample_link.split("images/");
+        sample_link = "./images/" + sample_links[1];
+
         const sample_opt = localStorage.getItem('sample_opt');
         const gif_sample = document.getElementById('gif_sample');
-        gif_sample.src = "./images/sample/0.gif";
+
         addSelectPiece(35); //지원 스킨 업데이트(체스닷컴의 32종류 스킨 지원)
 
-        /**
-        if(sample_opt >= 0)
-        {
-            if(sample_link.includes(".gif"))
-            {
-                //gif_sample.src = sample_link;
-            }
+        gif_sample.onerror = () => {
+            gif_sample.src = "./images/sample/0.gif";
         }
-        **/
 
+        gif_sample.src = sample_link;
         //updateUserProduct(); //커스텀 결과물 예시 업데이트
 
     }
